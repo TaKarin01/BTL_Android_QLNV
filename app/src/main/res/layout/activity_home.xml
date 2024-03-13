@@ -18,7 +18,7 @@
             android:orientation="horizontal"
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="1dp"
-            android:background="@color/button">
+            android:background="@color/button1">
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -82,7 +82,7 @@
                 android:layout_height="70dp"
                 android:text="Nhân viên"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/button"
+                android:backgroundTint="@color/button1"
                 android:layout_marginTop="50dp"
                 android:textColor="@color/black"
                 android:textSize="24sp"/>
@@ -93,7 +93,7 @@
                 android:layout_height="70dp"
                 android:text="Công việc"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/button"
+                android:backgroundTint="@color/button1"
                 android:layout_marginTop="30dp"
                 android:textColor="@color/black"
                 android:textSize="24sp"/>
@@ -104,7 +104,7 @@
                 android:layout_height="70dp"
                 android:text="Tuyển dụng"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/button"
+                android:backgroundTint="@color/button1"
                 android:layout_marginTop="30dp"
                 android:textColor="@color/black"
                 android:textSize="24sp"/>

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:orientation="horizontal"
-            android:background="@color/button">
+            android:background="@color/button1">
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="70dp"

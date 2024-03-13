@@ -19,14 +19,19 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String strSQL ="CREATE TABLE tbAdmin (maAd TEXT PRIMARY KEY,ten TEXT,namSinh TEXT,gioiTinh TEXT, email TEXT,banQL TEXT, pass TEXT)";
-        db.execSQL(strSQL);
+        String strSQL_admin ="CREATE TABLE tbAdmin (maAd TEXT PRIMARY KEY,ten TEXT,namSinh TEXT,gioiTinh TEXT, email TEXT,banQL TEXT, pass TEXT)";
+        db.execSQL(strSQL_admin);
+        String strSQL_employee = "CREATE TABLE tbEmployee (maE TEXT PRIMARY KEY, ten TEXT, namSinh TEXT, gioiTinh TEXT, banQL TEXT, email TEXT)";
+        db.execSQL(strSQL_employee);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String strSQL = "DROP TABLE IF EXISTS tbAdmin";
-        db.execSQL(strSQL);
+        String strSQL_admin = "DROP TABLE IF EXISTS tbAdmin";
+        db.execSQL(strSQL_admin);
+
+        String strSQL_employee = "DROP TABLE IF EXISTS tbEmployee";
+        db.execSQL(strSQL_employee);
     }
     // Các hàm để đăng kí tài khoản admin
 
