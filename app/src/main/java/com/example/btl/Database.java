@@ -146,4 +146,28 @@ public class Database extends SQLiteOpenHelper {
         return admin;
     }
 
+    // Thêm thông tin nhân viên
+    public Boolean addEmployee(String id, String name, String birth, String gender, String dept, String email)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("maE",id);
+        values.put("ten",name);
+        values.put("namSinh",birth);
+        values.put("gioiTinh",gender);
+        values.put("banQL",dept);
+        values.put("email",email);
+        long result = db.insert("tbEmployee",null,values);
+
+        if(result == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+     // Kiem
 }

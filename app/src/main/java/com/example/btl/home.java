@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class home extends AppCompatActivity {
     public ImageView user;
     public String ID;
@@ -30,6 +32,7 @@ public class home extends AppCompatActivity {
         hi.setText("Xin chào " + name);
 
         user = findViewById(R.id.user);
+
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +40,18 @@ public class home extends AppCompatActivity {
             }
         });
 
+        Button btn_employee = findViewById(R.id.employee);
+        Database db = new Database(this);
+        btn_employee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(home.this,employee.class);
+
+                ArrayList<String> admin = db.getAdmin(ID);
+                intent1.putExtra("dept",admin.get(4));
+                startActivity(intent1);
+            }
+        });
 
     }
     private void showMenu()
