@@ -45,11 +45,12 @@ public class home extends AppCompatActivity {
         btn_employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(home.this,employee.class);
+                Intent in = new Intent(home.this,employee.class);
 
                 ArrayList<String> admin = db.getAdmin(ID);
-                intent1.putExtra("dept",admin.get(4));
-                startActivity(intent1);
+                in.putExtra("dept",admin.get(4));
+
+                startActivity(in);
             }
         });
 

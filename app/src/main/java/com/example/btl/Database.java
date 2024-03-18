@@ -19,10 +19,19 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String strSQL_admin ="CREATE TABLE tbAdmin (maAd TEXT PRIMARY KEY,ten TEXT,namSinh TEXT,gioiTinh TEXT, email TEXT,banQL TEXT, pass TEXT)";
-        db.execSQL(strSQL_admin);
-        String strSQL_employee = "CREATE TABLE tbEmployee (maE TEXT PRIMARY KEY, ten TEXT, namSinh TEXT, gioiTinh TEXT, banQL TEXT, email TEXT)";
-        db.execSQL(strSQL_employee);
+//        String strSQL_admin ="CREATE TABLE tbAdmin (maAd TEXT PRIMARY KEY,ten TEXT,namSinh TEXT,gioiTinh TEXT, email TEXT,banQL TEXT, pass TEXT)";
+//        db.execSQL(strSQL_admin);
+//        String strSQL_employee = "CREATE TABLE tbEmployee (maE TEXT PRIMARY KEY, ten TEXT, namSinh TEXT, gioiTinh TEXT, banQL TEXT, email TEXT)";
+//        db.execSQL(strSQL_employee);
+
+        String strSQL = "CREATE TABLE tbAdmin (maAd TEXT PRIMARY KEY,ten TEXT,namSinh TEXT,gioiTinh TEXT, email TEXT,banQL TEXT, pass TEXT)" + "\n"
+                + "CREATE TABLE tbEmployee (maE TEXT PRIMARY KEY, ten TEXT, namSinh TEXT, gioiTinh TEXT, banQL TEXT, email TEXT)" + "\n"
+                + "CREATE TABLE tbMission (maE TEXT , tenCV TEXT, trangThai TEXT, CONSTRAINT mission_pk PRIMARY KEY(maE,tenCV))";
+
+        for(String s : strSQL.split("\n"))
+        {
+            db.execSQL(s);
+        }
     }
 
     @Override
@@ -169,5 +178,35 @@ public class Database extends SQLiteOpenHelper {
             return true;
         }
     }
-     // Kiem
+
+    // Kiểm tra ID của nhân viên
+    /** tồn tại mã nhân viên thì trả về true ngược lại là false **/
+    public Boolean checkIDEmployee(String id)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cr = db.rawQuery("SELECT * FROM tbEmployee WHERE maE = ?",new String[]{id});
+        if(cr.getCount()>0) return true;
+        else return false;
+    }
+     // Lay thong tin của nhan vien trong phòng ban mình quản lý
+
+    public ArrayList<ArrayList<String>> getListE(String dept)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String strSql = "SELECT maE, ten FROM tbEmployee WHERE banQL = ?";
+        Cursor cr = db.rawQuery(strSql,new String[]{dept});
+        ArrayList<ArrayList<String>> listE = new ArrayList<>();
+        while(cr.moveToNext())
+        {
+            ArrayList<String> E = new ArrayList<>();
+            for(int i=0; i<2;i++)
+            {
+                String s = cr.getString(i).toString();
+                E.add(s);
+            }
+            listE.add(E);
+        }
+        return listE;
+    }
+
 }

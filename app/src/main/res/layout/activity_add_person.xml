@@ -73,27 +73,30 @@
                         android:id="@+id/IDNV"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:hint="  Mã nhân viên"
+                        android:hint="Mã nhân viên"
                         android:layout_gravity="center"
-                        android:background="@drawable/botron_text"/>
+                        android:background="@drawable/botron_text"
+                        android:paddingLeft="10dp"/>
 
                     <EditText
                         android:id="@+id/name"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:hint="  Tên nhân viên"
+                        android:hint="Tên nhân viên"
                         android:layout_gravity="center"
                         android:background="@drawable/botron_text"
-                        android:layout_marginTop="30dp"/>
+                        android:layout_marginTop="30dp"
+                        android:paddingLeft="10dp"/>
 
                     <EditText
                         android:id="@+id/dob"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:hint="  Ngày/Tháng/Năm Sinh"
+                        android:hint="Ngày/Tháng/Năm Sinh"
                         android:layout_gravity="center"
                         android:background="@drawable/botron_text"
-                        android:layout_marginTop="30dp"/>
+                        android:layout_marginTop="30dp"
+                        android:paddingLeft="10dp"/>
 
                     <RadioGroup
                         android:layout_width="250dp"
@@ -130,10 +133,11 @@
                         android:id="@+id/email"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:hint="  Email"
+                        android:hint="Email"
                         android:layout_gravity="center"
                         android:background="@drawable/botron_text"
-                        android:layout_marginTop="30dp"/>
+                        android:layout_marginTop="30dp"
+                        android:paddingLeft="10dp"/>
                     <Button
                         android:id="@+id/add"
                         android:layout_width="150dp"
