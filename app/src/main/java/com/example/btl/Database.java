@@ -226,7 +226,7 @@ public class Database extends SQLiteOpenHelper {
         return e;
     }
 
-    //
+    //Thay đổi thông tin nhân viên
     public Boolean changeE(String id, String name, String dob, String gender, String mail)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -245,5 +245,14 @@ public class Database extends SQLiteOpenHelper {
         {
             return true;
         }
+    }
+
+    // Xóa nhân viên
+    public Boolean delE(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete("tbEmployee","maE = ?",new String[]{id});
+        if(result == -1) return false;
+        else return true;
     }
 }

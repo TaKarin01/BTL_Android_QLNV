@@ -28,7 +28,7 @@
         <activity android:name=".userProfile"/>
         <activity android:name=".employee"/>
         <activity android:name=".ShowEmployee"/>
-        <activity android:name=".Notification"/>
+        <activity android:name=".dialog"/>
     </application>
 
 </manifest>

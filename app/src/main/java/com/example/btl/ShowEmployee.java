@@ -1,7 +1,9 @@
 package com.example.btl;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -9,12 +11,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
 import java.util.ArrayList;
 
 public class ShowEmployee extends AppCompatActivity {
+    Database db = new Database(this);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +26,7 @@ public class ShowEmployee extends AppCompatActivity {
 
         TextView id, name, dob, mail;
         RadioButton female;
-        Database db = new Database(this);
+
 
         Intent inten = getIntent();
         Bundle bundle = inten.getExtras();
@@ -77,20 +81,63 @@ public class ShowEmployee extends AppCompatActivity {
         del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String str_name = name.getText().toString();
+                String str_id = id.getText().toString();
+                showDialog(str_name,str_id);
+//                AlertDialog.Builder builder = new AlertDialog.Builder(ShowEmployee.this, R.style.AlertDialog);
+//                View view = LayoutInflater.from(ShowEmployee.this).
+//                        inflate(R.layout.dialog_warring, findViewById(R.id.dialog));
+//                builder.setView(view);
+//                AlertDialog alertDialog = builder.create();
+//                alertDialog.show();
             }
         });
     }
-
-    public void makeNotification()
+    public void showDialog(String name, String id)
     {
-        String str = "CHANNEL_ID_NOTIFICATION";
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),str);
-        builder.setSmallIcon(R.drawable.notification);
-        builder.setContentTitle("Thông báo!");
-        builder.setContentText("Bạn có chắc muốn xóa nhân viên này!");
-        builder.setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ShowEmployee.this, R.style.AlertDialog);
+        View view = LayoutInflater.from(ShowEmployee.this).
+                inflate(R.layout.dialog_warring, findViewById(R.id.dialog));
 
-        Intent intent = new Intent(getApplicationContext(), Notification.class);
+        builder.setView(view);
+
+        TextView content = view.findViewById(R.id.content);
+        content.setText("Bạn có chắc muốn xóa thông tin nhân viên " + name +"?");
+
+        AlertDialog alertDialog = builder.create();
+
+        Button btn_no = view.findViewById(R.id.no);
+        Button btn_yes = view.findViewById(R.id.yes);
+        btn_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        btn_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(db.delE(id))
+                {
+                    Toast.makeText(ShowEmployee.this, "Xóa nhân viên thành công", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ShowEmployee.this,employee.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                {
+                    Toast.makeText(ShowEmployee.this, "Xóa nhân viên không thành công", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        if(alertDialog.getWindow() != null)
+        {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+
     }
+
+
 }
