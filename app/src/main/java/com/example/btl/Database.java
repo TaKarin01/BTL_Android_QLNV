@@ -209,4 +209,41 @@ public class Database extends SQLiteOpenHelper {
         return listE;
     }
 
+    // Lay thong tin nhan vien
+    public ArrayList<String> getE(String maE)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String strSql = "SELECT ten, namSinh, gioiTinh, email FROM tbEmployee WHERE maE = ?";
+        Cursor cr = db.rawQuery(strSql,new String[]{maE});
+        cr.moveToNext();
+        ArrayList<String> e = new ArrayList<>();
+        for(int i=0; i<4; i++)
+        {
+            String s;
+            s = cr.getString(i);
+            e.add(s);
+        }
+        return e;
+    }
+
+    //
+    public Boolean changeE(String id, String name, String dob, String gender, String mail)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("ten", name);
+        values.put("namSinh", dob);
+        values.put("gioiTinh", gender);
+        values.put("email", mail);
+
+        long result = db.update("tbEmployee",values,"maE = ?",new String[]{id});
+        if(result == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }

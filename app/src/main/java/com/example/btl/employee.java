@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Selection;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +31,7 @@ public class employee extends AppCompatActivity {
 
     RecyclerView recyclerView;
     employeeAdapter adapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +46,12 @@ public class employee extends AppCompatActivity {
         ArrayList<ArrayList<String>> listE = db.getListE(str_dept);
 
         recyclerView = findViewById(R.id.recycler_view);
-
         setRecyclerView();
 
 
-       add_person.setOnClickListener(new View.OnClickListener() {
+
+
+        add_person.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                 showDialog(str_dept);
@@ -59,23 +63,26 @@ public class employee extends AppCompatActivity {
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new employeeAdapter(this, new ArrayList<>());
+
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(itemDecoration);
+
+        adapter = new employeeAdapter(this,getListE());
         recyclerView.setAdapter(adapter);
 
-        getListE();
     }
 
-    private void getListE() {
+    private List<class_employee> getListE() {
         List<class_employee> listE = new ArrayList<>();
         Database db = new Database(this);
         ArrayList<ArrayList<String>> getAllE = db.getListE(str_dept);
 
         for(ArrayList<String> e : getAllE)
         {
-            listE.add(new class_employee(e.get(0),e.get(1),"no_data","no_data","no_data",0));
+            listE.add(new class_employee(e.get(0),e.get(1),0));
         }
 
-        adapter.setArraylist(listE);
+        return  listE;
     }
 
     private void showDialog(String str_dept)

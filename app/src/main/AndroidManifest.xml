@@ -27,6 +27,8 @@
         <activity android:name=".forgotPass"/>
         <activity android:name=".userProfile"/>
         <activity android:name=".employee"/>
+        <activity android:name=".ShowEmployee"/>
+        <activity android:name=".Notification"/>
     </application>
 
 </manifest>

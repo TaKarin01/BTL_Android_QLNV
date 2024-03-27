@@ -7,4 +7,6 @@
     <color name="text">#BBBBBB</color>
     <color name="header">#00BCD4</color>
     <color name="button2">#478500</color>
+    <color name="fix">#3F51B5</color>
+    <color name="delete">#AF0000</color>
 </resources>

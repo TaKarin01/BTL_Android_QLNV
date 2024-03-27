@@ -1,9 +1,12 @@
 package com.example.btl;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,20 +19,17 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
     Context context;
     List<class_employee> listE;
 
-    public employeeAdapter(Context context, List<class_employee> listE) {
+
+    public employeeAdapter(Context context,List<class_employee> listE) {
         this.context = context;
         this.listE = listE;
     }
 
-    public void setArraylist(List<class_employee> listE){
-        this.listE = listE;
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override
     public employeeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_layout,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout,parent,false);
         return new ViewHolder(view);
     }
 
@@ -38,15 +38,27 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
         if(listE != null && listE.size() > 0)
         {
             class_employee e = listE.get(position);
-            holder.col1.setText(e.getIdE());
-            holder.col2.setText(e.getNameE());
-            holder.col3.setText(e.getNumWork()+"");
-            holder.col4.setText(e.getMission());
-            holder.col5.setText(e.getDeadline());
-            holder.col6.setText(e.getStatus());
+            holder.name.setText(e.getNameE());
+            holder.id.setText(e.getIdE());
+            holder.numWork.setText(e.getNumWork()+"/26");
+
+            holder.layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickGoToDetail(e);
+                }
+            });
         }else {
             return;
         }
+    }
+
+    private void onClickGoToDetail(class_employee e) {
+        Intent intent = new Intent(context,ShowEmployee.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("employee",e);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
     @Override
@@ -54,16 +66,15 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
         return listE.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView col1,col2,col3,col4,col5,col6;
+        LinearLayout layout;
+        TextView name,id, numWork;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            col1 = itemView.findViewById(R.id.col1);
-            col2 = itemView.findViewById(R.id.col2);
-            col3 = itemView.findViewById(R.id.col3);
-            col4 = itemView.findViewById(R.id.col4);
-            col5 = itemView.findViewById(R.id.col5);
-            col6 = itemView.findViewById(R.id.col6);
-
+            layout = itemView.findViewById(R.id.linear_item);
+            name = itemView.findViewById(R.id.nameE);
+            id = itemView.findViewById(R.id.idE);
+            numWork = itemView.findViewById(R.id.content2);
         }
     }
+
 }
