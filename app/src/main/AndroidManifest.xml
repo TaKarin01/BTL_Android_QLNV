@@ -29,6 +29,8 @@
         <activity android:name=".employee"/>
         <activity android:name=".ShowEmployee"/>
         <activity android:name=".dialog"/>
+        <activity android:name=".Work"/>
+        <activity android:name=".EmployeeManager"/>
     </application>
 
 </manifest>

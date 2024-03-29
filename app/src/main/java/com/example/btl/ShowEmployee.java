@@ -84,12 +84,7 @@ public class ShowEmployee extends AppCompatActivity {
                 String str_name = name.getText().toString();
                 String str_id = id.getText().toString();
                 showDialog(str_name,str_id);
-//                AlertDialog.Builder builder = new AlertDialog.Builder(ShowEmployee.this, R.style.AlertDialog);
-//                View view = LayoutInflater.from(ShowEmployee.this).
-//                        inflate(R.layout.dialog_warring, findViewById(R.id.dialog));
-//                builder.setView(view);
-//                AlertDialog alertDialog = builder.create();
-//                alertDialog.show();
+
             }
         });
     }
@@ -121,8 +116,8 @@ public class ShowEmployee extends AppCompatActivity {
                 if(db.delE(id))
                 {
                     Toast.makeText(ShowEmployee.this, "Xóa nhân viên thành công", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ShowEmployee.this,employee.class);
-                    startActivity(intent);
+                    alertDialog.dismiss();
+                    startActivity(new Intent(ShowEmployee.this,employee.class));
                     finish();
                 }
                 else

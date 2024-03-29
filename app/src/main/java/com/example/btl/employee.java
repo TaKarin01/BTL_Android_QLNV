@@ -132,8 +132,8 @@ public class employee extends AppCompatActivity {
                         {
                             Toast.makeText(employee.this, "Thêm mới nhân viên vào ban thành công!", Toast.LENGTH_SHORT).show();
                             dialog.cancel();
-                            Intent intent = new Intent(employee.this,employee.class);
-                            startActivity(intent);
+                            finish();
+                            startActivity(getIntent());
                         }
                         else
                         {

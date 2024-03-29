@@ -45,7 +45,7 @@ public class home extends AppCompatActivity {
         btn_employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(home.this,employee.class);
+                Intent in = new Intent(home.this,EmployeeManager.class);
 
                 ArrayList<String> admin = db.getAdmin(ID);
                 in.putExtra("dept",admin.get(4));
@@ -54,6 +54,18 @@ public class home extends AppCompatActivity {
             }
         });
 
+        Button btn_work = findViewById(R.id.work);
+        btn_work.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(home.this,Work.class);
+
+                ArrayList<String> admin = db.getAdmin(ID);
+                in.putExtra("dept",admin.get(4));
+
+                startActivity(in);
+            }
+        });
     }
     private void showMenu()
     {

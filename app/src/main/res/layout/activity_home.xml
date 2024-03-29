@@ -83,7 +83,7 @@
                 android:text="Nhân viên"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/button1"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:textColor="@color/black"
                 android:textSize="24sp"/>
 

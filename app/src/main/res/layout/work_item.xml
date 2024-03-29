@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="horizontal"
+    android:background="@drawable/botron">
+
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        app:srcCompat="@drawable/work"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/nameE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nguyen Van A"
+            android:textStyle="bold"
+            android:textSize="26sp"
+
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/projectName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Dữ án; ABC"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/workName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đang tiến hành: "
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trạng thái: "
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+</LinearLayout>
