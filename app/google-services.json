@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1048355126061",
+    "project_id": "btl-android-da89b",
+    "storage_bucket": "btl-android-da89b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048355126061:android:c4253a338e91c701f471a4",
+        "android_client_info": {
+          "package_name": "com.example.btl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNWdQoPEjHx88OhFGkBpeXL93rVPD3g-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
