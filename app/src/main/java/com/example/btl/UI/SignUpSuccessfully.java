@@ -1,6 +1,5 @@
-package com.example.btl;
+package com.example.btl.UI;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +7,8 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.btl.R;
 
 public class SignUpSuccessfully extends AppCompatActivity {
     @Override

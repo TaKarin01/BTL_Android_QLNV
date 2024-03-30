@@ -1,4 +1,4 @@
-package com.example.btl;
+package com.example.btl.UI;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.btl.R;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

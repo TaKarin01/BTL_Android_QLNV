@@ -1,10 +1,13 @@
-package com.example.btl;
+package com.example.btl.Adapter;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.btl.R;
+import com.example.btl.object.class_work;
 
 import java.util.ArrayList;
 

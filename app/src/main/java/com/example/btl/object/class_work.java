@@ -1,4 +1,4 @@
-package com.example.btl;
+package com.example.btl.object;
 
 public class class_work {
     String nameE, prjName, workName, status;

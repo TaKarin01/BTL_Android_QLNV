@@ -1,19 +1,19 @@
-package com.example.btl;
+package com.example.btl.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.btl.Database.Database;
+import com.example.btl.R;
 
 import java.util.ArrayList;
 
@@ -58,7 +58,7 @@ public class home extends AppCompatActivity {
         btn_work.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(home.this,Work.class);
+                Intent in = new Intent(home.this, Work.class);
 
                 ArrayList<String> admin = db.getAdmin(ID);
                 in.putExtra("dept",admin.get(4));

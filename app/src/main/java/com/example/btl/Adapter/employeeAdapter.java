@@ -1,4 +1,4 @@
-package com.example.btl;
+package com.example.btl.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.btl.R;
+import com.example.btl.UI.ShowEmployee;
+import com.example.btl.object.class_employee;
 
 import java.util.List;
 
@@ -54,7 +58,7 @@ public class employeeAdapter extends RecyclerView.Adapter<employeeAdapter.ViewHo
     }
 
     private void onClickGoToDetail(class_employee e) {
-        Intent intent = new Intent(context,ShowEmployee.class);
+        Intent intent = new Intent(context, ShowEmployee.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("employee",e);
         intent.putExtras(bundle);

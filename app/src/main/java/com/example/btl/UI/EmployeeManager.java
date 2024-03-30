@@ -1,4 +1,4 @@
-package com.example.btl;
+package com.example.btl.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.btl.R;
 
 public class EmployeeManager extends AppCompatActivity {
     @Override
