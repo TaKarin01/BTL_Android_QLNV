@@ -84,6 +84,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/timeKeeping"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:background="@drawable/frame_layout_customize">

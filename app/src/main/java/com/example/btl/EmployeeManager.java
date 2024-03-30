@@ -27,5 +27,14 @@ public class EmployeeManager extends AppCompatActivity {
             }
         });
 
+        FrameLayout f_timeKeeping = findViewById(R.id.timeKeeping);
+        f_timeKeeping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(EmployeeManager.this,TimeKeeping.class);
+                startActivity(in);
+            }
+        });
+
     }
 }

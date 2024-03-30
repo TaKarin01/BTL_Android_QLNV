@@ -31,6 +31,7 @@
         <activity android:name=".dialog"/>
         <activity android:name=".Work"/>
         <activity android:name=".EmployeeManager"/>
+        <activity android:name=".TimeKeeping"/>
     </application>
 
 </manifest>
