@@ -76,38 +76,82 @@
                 android:layout_marginTop="20dp"
                 />
 
-            <Button
-                android:id="@+id/employee"
-                android:layout_width="250dp"
-                android:layout_height="70dp"
-                android:text="Nhân viên"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/button1"
-                android:layout_marginTop="30dp"
-                android:textColor="@color/black"
-                android:textSize="24sp"/>
+<!--            <Button-->
+<!--                android:id="@+id/employee"-->
+<!--                android:layout_width="250dp"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:text="Nhân viên"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:backgroundTint="@color/button1"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="24sp"/>-->
 
-            <Button
-                android:id="@+id/work"
-                android:layout_width="250dp"
-                android:layout_height="70dp"
-                android:text="Công việc"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/button1"
-                android:layout_marginTop="30dp"
-                android:textColor="@color/black"
-                android:textSize="24sp"/>
+<!--            <Button-->
+<!--                android:id="@+id/work"-->
+<!--                android:layout_width="250dp"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:text="Công việc"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:backgroundTint="@color/button1"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="24sp"/>-->
+            <LinearLayout
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <FrameLayout
+                    android:id="@+id/employee"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/frame_layout_customize"
+                    android:layout_marginRight="30dp">
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center_horizontal"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/nhan_vien"
+                        android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:textSize="14sp"
+                        android:text="Nhân viên"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="50dp"
+                        android:textStyle="bold"/>
+                </FrameLayout>
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="250dp"
-                android:layout_height="70dp"
-                android:text="Tuyển dụng"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/button1"
-                android:layout_marginTop="30dp"
-                android:textColor="@color/black"
-                android:textSize="24sp"/>
+                <FrameLayout
+                    android:id="@+id/work"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/frame_layout_customize"
+                   >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center_horizontal"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cong_viec"
+                        android:background="@color/white"/>
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:textSize="14sp"
+                        android:text="Công việc"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="50dp"
+                        android:textStyle="bold"/>
+                </FrameLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
     </LinearLayout>

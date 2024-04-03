@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -40,7 +41,7 @@ public class home extends AppCompatActivity {
             }
         });
 
-        Button btn_employee = findViewById(R.id.employee);
+        FrameLayout btn_employee = findViewById(R.id.employee);
         Database db = new Database(this);
         btn_employee.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +55,7 @@ public class home extends AppCompatActivity {
             }
         });
 
-        Button btn_work = findViewById(R.id.work);
+        FrameLayout btn_work = findViewById(R.id.work);
         btn_work.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +67,8 @@ public class home extends AppCompatActivity {
                 startActivity(in);
             }
         });
+
+
     }
     private void showMenu()
     {
