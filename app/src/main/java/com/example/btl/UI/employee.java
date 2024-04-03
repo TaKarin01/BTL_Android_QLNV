@@ -2,14 +2,17 @@ package com.example.btl.UI;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -20,8 +23,20 @@ import com.example.btl.Database.Database;
 import com.example.btl.R;
 import com.example.btl.object.class_employee;
 import com.example.btl.Adapter.employeeAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.LocalCacheSettings;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class employee extends AppCompatActivity {
@@ -29,6 +44,7 @@ public class employee extends AppCompatActivity {
 
     RecyclerView recyclerView;
     employeeAdapter adapter;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,7 +64,6 @@ public class employee extends AppCompatActivity {
 
 
 
-
         add_person.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -58,6 +73,7 @@ public class employee extends AppCompatActivity {
     }
 
     private void setRecyclerView() {
+        List<class_employee> listE = new ArrayList<>();
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -65,23 +81,43 @@ public class employee extends AppCompatActivity {
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 
-        adapter = new employeeAdapter(this,getListE());
+        adapter = new employeeAdapter(this,listE);
         recyclerView.setAdapter(adapter);
 
-    }
 
-    private List<class_employee> getListE() {
-        List<class_employee> listE = new ArrayList<>();
         Database db = new Database(this);
         ArrayList<ArrayList<String>> getAllE = db.getListE(str_dept);
 
+        FirebaseDatabase fdb = FirebaseDatabase.getInstance();
+        DatabaseReference ref = fdb.getReference();
+
+        LocalDate date = LocalDate.now();
+        int year = date.getYear();
+        int month = date.getMonthValue();
+        String m;
+
+        if(month < 10) m = "0" + month;
+        else m = month+"";
+
         for(ArrayList<String> e : getAllE)
         {
-            listE.add(new class_employee(e.get(0),e.get(1),0));
-        }
 
-        return  listE;
+            ref.child("TimeKeeping/"+e.get(0)+"/"+ year+ "/" + m).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int count = (int) snapshot.getChildrenCount();
+                    listE.add(new class_employee(e.get(0),e.get(1),count));
+                    adapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
     }
+
 
     private void showDialog(String str_dept)
     {
