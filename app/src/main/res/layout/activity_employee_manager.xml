@@ -108,6 +108,7 @@
             </FrameLayout>
         </LinearLayout>
         <FrameLayout
+            android:id="@+id/evaluate"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/frame_layout_customize"
@@ -124,7 +125,7 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:textSize="14sp"
-                android:text="Thông tin nhân viên"
+                android:text="Đánh giá nhân viên"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"

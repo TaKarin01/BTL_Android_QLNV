@@ -39,5 +39,13 @@ public class EmployeeManager extends AppCompatActivity {
             }
         });
 
+        FrameLayout f_evaluate = findViewById(R.id.evaluate);
+        f_evaluate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 }
