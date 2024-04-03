@@ -2,6 +2,7 @@ package com.example.btl.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import com.example.btl.Database.Database;
 import com.example.btl.R;
 import com.example.btl.object.class_work;
 import com.example.btl.Adapter.workAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -103,11 +105,9 @@ public class Work extends AppCompatActivity {
 
                 }
             });
-
-
         }
-
         lv.setAdapter(adapter);
+
 
     }
 }

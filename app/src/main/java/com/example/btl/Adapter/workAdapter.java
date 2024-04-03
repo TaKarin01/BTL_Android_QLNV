@@ -1,7 +1,9 @@
 package com.example.btl.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.btl.Database.Database;
 import com.example.btl.R;
+import com.example.btl.UI.AddWork;
 import com.example.btl.object.class_work;
 
 import java.util.ArrayList;
@@ -60,6 +63,21 @@ public class workAdapter extends BaseAdapter {
         if(w.get(position).getStatus().equals("Quá hạn")) status.setTextColor(Color.rgb(200,0,0));
         status.setText("Trạng thái: " + w.get(position).getStatus());
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AddWork.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putString("idE",w.get(position).getIdE());
+                bundle.putString("nameE",e.get(0));
+                intent.putExtras(bundle);
+
+                context.startActivity(intent);
+            }
+        });
+
         return convertView;
     }
+
 }
