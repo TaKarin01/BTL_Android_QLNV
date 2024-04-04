@@ -35,6 +35,7 @@
         <activity android:name=".UI.AddWork"/>
         <activity android:name=".UI.Evaluate"/>
         <activity android:name=".UI.DetailEvaluate"/>
+        <activity android:name=".UI.AddEmployee"/>
     </application>
 
 </manifest>

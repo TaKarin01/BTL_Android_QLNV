@@ -67,7 +67,10 @@ public class employee extends AppCompatActivity {
         add_person.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-                showDialog(str_dept);
+//                showDialog(str_dept);
+               Intent intent1 = new Intent(employee.this,AddEmployee.class);
+               intent1.putExtra("dept",str_dept);
+               startActivity(intent1);
            }
        });
     }
@@ -109,7 +112,6 @@ public class employee extends AppCompatActivity {
                     listE.add(new class_employee(e.get(0),e.get(1),count));
                     adapter.notifyDataSetChanged();
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
@@ -118,65 +120,4 @@ public class employee extends AppCompatActivity {
         }
     }
 
-
-    private void showDialog(String str_dept)
-    {
-        Dialog dialog = new Dialog(employee.this);
-        dialog.setContentView(R.layout.activity_add_person);
-
-        //Lay thong tin
-        EditText id,name,birth, email;
-        RadioButton rb_male;
-        id = dialog.findViewById(R.id.IDNV);
-        name = dialog.findViewById(R.id.name);
-        birth = dialog.findViewById(R.id.dob);
-        email = dialog.findViewById(R.id.email);
-
-        rb_male = dialog.findViewById(R.id.male);
-
-        Button btn_add = dialog.findViewById(R.id.add);
-
-        Database db = new Database(employee.this);
-
-        btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String str_id = id.getText().toString();
-                String str_name = name.getText().toString();
-                String str_birth = birth.getText().toString();
-                String str_email = email.getText().toString();
-                String str_gender;
-
-                if(rb_male.isChecked()) str_gender = "Nam";
-                else str_gender = "Nữ";
-
-                if(str_id.equals("") || str_name.equals("") || str_birth.equals("") || str_email.equals(""))
-                {
-                    Toast.makeText(employee.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    if(db.checkIDEmployee(str_id))
-                    {
-                        Toast.makeText(employee.this, "Đã tồn tại mã nhân viên!", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
-                        if(db.addEmployee(str_id,str_name,str_birth,str_gender,str_dept,str_email))
-                        {
-                            Toast.makeText(employee.this, "Thêm mới nhân viên vào ban thành công!", Toast.LENGTH_SHORT).show();
-                            dialog.cancel();
-                            finish();
-                            startActivity(getIntent());
-                        }
-                        else
-                        {
-                            Toast.makeText(employee.this, "Thêm mới nhân viên không thành công!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-            }
-        });
-        dialog.show();
-    }
 }
