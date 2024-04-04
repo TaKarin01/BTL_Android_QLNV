@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class evaluateAdapter extends BaseAdapter {
@@ -70,6 +71,42 @@ public class evaluateAdapter extends BaseAdapter {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int lateDl = snapshot.getValue(Integer.class);
                 if(lateDl != 0)
+                {
+                    FrameLayout f = finalConvertView.findViewById(R.id.evaluate);
+                    f.setBackgroundColor(Color.rgb(255,10,10));
+                    TextView text = finalConvertView.findViewById(R.id.text);
+                    text.setText("Chưa tốt");
+                    ImageView img = finalConvertView.findViewById(R.id.icon);
+                    img.setImageResource(R.drawable.bad);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        LocalDate date = LocalDate.now();
+        int year = date.getYear();
+        int month = date.getMonthValue();
+
+        String m;
+        if (month == 1) {
+            m = "12";
+            year -= 1;
+        } else {
+            month -= 1;
+        }
+
+        if (month < 10) m = "0" + month;
+        else m = month + "";
+
+        ref.child("TimeKeeping/" + listE.get(position).get(0) + "/" + year + "/" + m).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int count = (int) snapshot.getChildrenCount();
+                if(count < 26)
                 {
                     FrameLayout f = finalConvertView.findViewById(R.id.evaluate);
                     f.setBackgroundColor(Color.rgb(255,10,10));

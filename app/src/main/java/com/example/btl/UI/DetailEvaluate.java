@@ -3,7 +3,11 @@ package com.example.btl.UI;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +27,7 @@ public class DetailEvaluate extends AppCompatActivity {
     LocalDate date = LocalDate.now();
     int year = date.getYear();
     int month = date.getMonthValue();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,25 +54,23 @@ public class DetailEvaluate extends AppCompatActivity {
 
 
         String m;
-        if(month == 1) {
+        if (month == 1) {
             m = "12";
-            year-=1;
-        }
-        else
-        {
-            month-=1;
+            year -= 1;
+        } else {
+            month -= 1;
         }
 
-        if(month < 10) m = "0" + month;
-        else m = month+"";
+        if (month < 10) m = "0" + month;
+        else m = month + "";
 
-        ref.child("TimeKeeping/"+idE+"/"+ year+ "/" + m).addValueEventListener(new ValueEventListener() {
+        ref.child("TimeKeeping/" + idE + "/" + year + "/" + m).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int count = (int) snapshot.getChildrenCount();
                 time.setText("Số công: " + count);
 
-                if(count < 26) time.setTextColor(Color.RED);
+                if (count < 26) time.setTextColor(Color.RED);
             }
 
             @Override
@@ -76,17 +79,14 @@ public class DetailEvaluate extends AppCompatActivity {
             }
         });
 
-        ref.child("Evaluate/"+idE+"/LateDl").addValueEventListener(new ValueEventListener() {
+        ref.child("Evaluate/" + idE + "/LateDl").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int lateDl = snapshot.getValue(Integer.class);
-                if(lateDl != 0)
-                {
-                    dl.setText("Chậm deadline: "+lateDl);
+                if (lateDl != 0) {
+                    dl.setText("Chậm deadline: " + lateDl);
                     dl.setTextColor(Color.RED);
-                }
-                else
-                {
+                } else {
                     dl.setText("Chậm deadline: 0");
                 }
             }
@@ -96,7 +96,17 @@ public class DetailEvaluate extends AppCompatActivity {
 
             }
         });
+
+        EditText cmt = findViewById(R.id.comment);
+
+        Button btn = findViewById(R.id.submit);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ref.child("Evaluate/" + idE + "/Comment").setValue(cmt.getText().toString());
+                Toast.makeText(DetailEvaluate.this, "Đã thêm nhận xét cho nhân viên", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
-
-
 }
