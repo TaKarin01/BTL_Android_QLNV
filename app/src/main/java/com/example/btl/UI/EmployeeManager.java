@@ -44,6 +44,7 @@ public class EmployeeManager extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(EmployeeManager.this, Evaluate.class);
+                in.putExtra("dept",str_dept);
                 startActivity(in);
             }
         });

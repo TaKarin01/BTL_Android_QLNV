@@ -33,6 +33,8 @@
         <activity android:name=".UI.EmployeeManager"/>
         <activity android:name=".UI.TimeKeeping"/>
         <activity android:name=".UI.AddWork"/>
+        <activity android:name=".UI.Evaluate"/>
+        <activity android:name=".UI.DetailEvaluate"/>
     </application>
 
 </manifest>
