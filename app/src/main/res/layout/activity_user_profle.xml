@@ -36,13 +36,6 @@
                 android:textStyle="bold|italic"
                 />
 
-            <ImageView
-                android:id="@+id/user"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/user_icon"
-                android:layout_gravity="center"
-                android:layout_marginLeft="170dp"/>
         </LinearLayout>
 
         <LinearLayout

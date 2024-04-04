@@ -49,6 +49,7 @@ public class home extends AppCompatActivity {
                 Intent in = new Intent(home.this,EmployeeManager.class);
 
                 ArrayList<String> admin = db.getAdmin(ID);
+                in.putExtra("ID",ID);
                 in.putExtra("dept",admin.get(4));
 
                 startActivity(in);
