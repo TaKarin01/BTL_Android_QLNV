@@ -105,8 +105,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/botron_text"
-                android:inputType="none"
-                android:focusable="false"
+                android:inputType="text"
                 android:paddingLeft="20dp" />
             <TextView
                 android:layout_width="wrap_content"
@@ -121,8 +120,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/botron_text"
-                android:inputType="none"
-                android:focusable="false"
+                android:inputType="text"
                 android:paddingLeft="20dp" />
 
             <TextView
@@ -152,12 +150,11 @@
                 android:id="@+id/doc"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:inputType="none"
+                android:inputType="text"
                 android:background="@drawable/botron_text"
                 android:layout_marginLeft="30dp"
                 android:layout_marginBottom="10dp"
                 android:paddingLeft="20dp"
-                android:focusable="false"
                 />
 
 
@@ -174,7 +171,7 @@
                 android:layout_width="303dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="100dp"
                 android:background="@drawable/botron_text"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"

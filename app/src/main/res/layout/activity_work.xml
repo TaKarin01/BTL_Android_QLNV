@@ -61,17 +61,6 @@
             android:layout_marginTop="30dp"
             android:background="@color/white"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add"
-            android:layout_gravity="end"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:backgroundTint="@color/button1"/>
-
-
     </LinearLayout>
 
 </LinearLayout>

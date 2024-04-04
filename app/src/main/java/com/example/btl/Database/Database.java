@@ -255,4 +255,14 @@ public class Database extends SQLiteOpenHelper {
         if(result == -1) return false;
         else return true;
     }
+
+    // Lay ban quan ly cua nhan vien
+    public String getDept(String idE)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String strSql = "SELECT banQL FROM tbEmployee WHERE maE = ?";
+        Cursor cr = db.rawQuery(strSql, new String[]{idE});
+        cr.moveToNext();
+        return cr.getString(0);
+    }
 }
