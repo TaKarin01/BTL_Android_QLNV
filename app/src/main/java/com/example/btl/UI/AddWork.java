@@ -66,9 +66,9 @@ public class AddWork extends AppCompatActivity {
                 String [] date = dl.getText().toString().split("/");
                 String d = date[0]+"-"+date[1]+"-"+date[2];
 
-                ref.child("TimeKeeping").child(idE).child("deadline").setValue(d.toString());
-                ref.child("TimeKeeping").child(idE).child("prjName").setValue(prj.getText().toString());
-                ref.child("TimeKeeping").child(idE).child("workName").setValue(work.getText().toString());
+                ref.child("Work").child(idE).child("deadline").setValue(d.toString());
+                ref.child("Work").child(idE).child("prjName").setValue(prj.getText().toString());
+                ref.child("Work").child(idE).child("workName").setValue(work.getText().toString());
 
 
                 Toast.makeText(AddWork.this, "Đã giao việc cho nhân viên!", Toast.LENGTH_SHORT).show();
