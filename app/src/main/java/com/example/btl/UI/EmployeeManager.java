@@ -43,7 +43,8 @@ public class EmployeeManager extends AppCompatActivity {
         f_evaluate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent in = new Intent(EmployeeManager.this, Evaluate.class);
+                startActivity(in);
             }
         });
 

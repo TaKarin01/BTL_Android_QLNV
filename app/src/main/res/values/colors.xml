@@ -9,4 +9,6 @@
     <color name="button2">#478500</color>
     <color name="fix">#3F51B5</color>
     <color name="delete">#AF0000</color>
+    <color name="good">#0AC80A</color>
+    <color name="bad">#FF3232</color>
 </resources>

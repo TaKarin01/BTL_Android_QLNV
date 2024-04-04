@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
@@ -38,31 +38,22 @@
             android:layout_marginLeft="170dp"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:background="@color/background"
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đánh giá nhân viên"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:layout_gravity="center"/>
+    <ListView
+        android:id="@+id/listEvaluate"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quản lý công việc"
-            android:textSize="30sp"
-            android:textStyle="bold|italic"
-            android:layout_gravity="center"/>
-
-        <ListView
-            android:id="@+id/listViewWork"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="30dp"
-            android:background="@color/white"
-            android:divider="@color/text"
-            android:dividerHeight="5dp"/>
-
-    </LinearLayout>
+        android:layout_height="400dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:divider="@color/text"
+        android:dividerHeight="5dp"/>
 
 </LinearLayout>

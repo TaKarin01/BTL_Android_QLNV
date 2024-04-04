@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:background="@drawable/botron_text">
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/user_icon1"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/nameE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nguyễn Văn A"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/idE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã nhân viên"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/evaluate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:background="@color/good"
+        android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/good"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"/>
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tốt"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="24sp"/>
+
+
+    </FrameLayout>
+
+</LinearLayout>
