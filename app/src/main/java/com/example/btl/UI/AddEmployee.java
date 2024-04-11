@@ -13,8 +13,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.btl.Database.Database;
 import com.example.btl.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.time.LocalDate;
 
 public class AddEmployee extends AppCompatActivity {
+    LocalDate date = LocalDate.now();
+    int year = date.getYear();
+    int month = date.getMonthValue();
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +72,22 @@ public class AddEmployee extends AppCompatActivity {
                     {
                         if(db.addEmployee(str_id,str_name,str_birth,str_gender,str_dept,str_email))
                         {
+                            String m;
+                            if (month == 1) {
+                                m = "12";
+                                year -= 1;
+                            } else {
+                                month -= 1;
+                            }
+
+                            if (month < 10) m = "0" + month;
+                            else m = month + "";
+
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                            ref.child("Evaluate").child(str_id.toString()).child("LateDl").setValue(0);
+                            ref.child("TimeKeeping").child(str_id.toString()).child(year+"/"+m).setValue("unchecked");
+
+
                             Toast.makeText(AddEmployee.this, "Thêm mới nhân viên vào ban thành công!", Toast.LENGTH_SHORT).show();
                             finish();
                         }

@@ -86,10 +86,8 @@ public class Work extends AppCompatActivity {
 
                         String status = checkDeadline(arr[0]);
 
-
                         class_work w = new class_work(idE,arr[1],arr[2],status);
                         listW.add(w);
-
                     }
                     else
                     {

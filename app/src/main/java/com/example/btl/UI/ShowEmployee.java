@@ -120,7 +120,6 @@ public class ShowEmployee extends AppCompatActivity {
                 {
                     Toast.makeText(ShowEmployee.this, "Xóa nhân viên thành công", Toast.LENGTH_SHORT).show();
                     alertDialog.dismiss();
-                    startActivity(new Intent(ShowEmployee.this,employee.class));
                     finish();
                 }
                 else
