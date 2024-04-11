@@ -90,6 +90,7 @@ public class AddEmployee extends AppCompatActivity {
 
                             Toast.makeText(AddEmployee.this, "Thêm mới nhân viên vào ban thành công!", Toast.LENGTH_SHORT).show();
                             finish();
+                            startActivity(getIntent());
                         }
                         else
                         {
