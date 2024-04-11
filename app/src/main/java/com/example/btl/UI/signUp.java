@@ -1,9 +1,11 @@
 package com.example.btl.UI;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import com.example.btl.Database.Database;
 import com.example.btl.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class signUp extends AppCompatActivity {
     @Override
@@ -69,13 +72,6 @@ public class signUp extends AppCompatActivity {
                         userID.setText("");
                     }
                     else {
-                        try {
-                            sdf.parse(birthday);
-                        }
-                        catch (Exception e)
-                        {
-                            Toast.makeText(signUp.this, "Không đúng dạng ngày/tháng/năm sinh!", Toast.LENGTH_SHORT).show();
-                        }
                         String emailPattern = "\\w+@\\w+[.]\\w+";
                         Boolean check = mail.matches(emailPattern);
                         if(!check)
@@ -108,5 +104,30 @@ public class signUp extends AppCompatActivity {
                 }
             }
         });
+
+        birth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickDate(birth);
+            }
+        });
+    }
+
+    public void pickDate(EditText c)
+    {
+        Calendar calendar = Calendar.getInstance();
+        int day = (calendar.get(Calendar.DATE));
+        int month = (calendar.get(Calendar.MONTH));
+        int year = (calendar.get(Calendar.YEAR));
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(year,month,dayOfMonth);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                c.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        }, year,month,day);
+        datePickerDialog.show();
     }
 }
